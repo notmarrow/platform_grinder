@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var speed :int = 200
 @export var steps :int = 250
-@export var current_steps :int = 0
+var current_steps :int = 0
 
 func _ready():
 	velocity.x = speed
