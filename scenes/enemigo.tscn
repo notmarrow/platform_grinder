@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://7owmoq8o54hq"]
 
-[ext_resource type="Script" path="res://Script/Enemigo.gd" id="1_4s2ig"]
+[ext_resource type="Script" path="res://Script/enemigo.gd" id="1_gdoy6"]
 [ext_resource type="Texture2D" uid="uid://546cny6plfil" path="res://assets/icon.svg" id="2_s1t6d"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_xfglw"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_nn3nt"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -14,34 +14,18 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vvmn7"]
-size = Vector2(79, 69)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l5fa1"]
+size = Vector2(120.5, 104)
 
-[node name="enemigo" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 42.0
-offset_top = -14.0
-offset_right = 49.0
-offset_bottom = -10.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="enemigo" type="CharacterBody2D"]
+position = Vector2(125, 328)
+script = ExtResource("1_gdoy6")
 
-[node name="Enemigo" type="CharacterBody2D" parent="."]
-position = Vector2(-344, 44)
-collision_layer = 2
-script = ExtResource("1_4s2ig")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(5.99999, 8)
+scale = Vector2(1.01953, 0.921875)
+sprite_frames = SubResource("SpriteFrames_nn3nt")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemigo"]
-position = Vector2(0, -27)
-scale = Vector2(0.640625, 0.578125)
-sprite_frames = SubResource("SpriteFrames_xfglw")
-
-[node name="zona_daño" type="Area2D" parent="Enemigo"]
-collision_layer = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemigo/zona_daño"]
-position = Vector2(-1, -27)
-shape = SubResource("RectangleShape2D_vvmn7")
+[node name="zona_daño" type="CollisionShape2D" parent="."]
+position = Vector2(5.75, 8)
+shape = SubResource("RectangleShape2D_l5fa1")
