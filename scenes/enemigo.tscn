@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://7owmoq8o54hq"]
+[gd_scene load_steps=5 format=3 uid="uid://7owmoq8o54hq"]
 
 [ext_resource type="Script" path="res://Script/Enemigo.gd" id="1_4s2ig"]
 [ext_resource type="Texture2D" uid="uid://546cny6plfil" path="res://assets/icon.svg" id="2_s1t6d"]
@@ -13,9 +13,6 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_haxnj"]
-size = Vector2(73, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vvmn7"]
 size = Vector2(79, 69)
@@ -33,7 +30,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Enemigo" type="CharacterBody2D" parent="."]
-position = Vector2(0, 81)
+position = Vector2(-344, 44)
 collision_layer = 2
 script = ExtResource("1_4s2ig")
 
@@ -42,22 +39,9 @@ position = Vector2(0, -27)
 scale = Vector2(0.640625, 0.578125)
 sprite_frames = SubResource("SpriteFrames_xfglw")
 
-[node name="Collision_suelo" type="CollisionShape2D" parent="Enemigo"]
-position = Vector2(3.8147e-06, -3)
-shape = SubResource("RectangleShape2D_haxnj")
-debug_color = Color(0.764706, 0.45098, 0, 0.419608)
-
-[node name="RayCast_suelo" type="RayCast2D" parent="Enemigo"]
-position = Vector2(44, -9)
-target_position = Vector2(0, 32)
-
-[node name="RayCast_pared" type="RayCast2D" parent="Enemigo"]
-position = Vector2(1, -12)
-target_position = Vector2(45, 0)
-
 [node name="zona_daño" type="Area2D" parent="Enemigo"]
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemigo/zona_daño"]
-position = Vector2(0, -27)
+position = Vector2(-1, -27)
 shape = SubResource("RectangleShape2D_vvmn7")
