@@ -11,6 +11,13 @@ config_version=5
 [application]
 
 config/name="Diseno"
-run/main_scene="res://scenes/enemigo.tscn"
+run/main_scene="res://scenes/HUD.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1820
+window/size/viewport_height=1080
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
