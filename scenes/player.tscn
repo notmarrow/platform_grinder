@@ -14,3 +14,9 @@ shape = SubResource("RectangleShape2D_clmuh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_75cc4")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2(1, 0.990329)
+offset = Vector2(0, -80)
+zoom = Vector2(0.9, 0.9)
+position_smoothing_enabled = true
