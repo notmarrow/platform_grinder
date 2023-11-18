@@ -1,31 +1,29 @@
-[gd_scene load_steps=5 format=3 uid="uid://7owmoq8o54hq"]
+[gd_scene load_steps=5 format=3 uid="uid://64urlo2x2vqy"]
 
-[ext_resource type="Script" path="res://scripts/enemigo.gd" id="1_0hxhb"]
-[ext_resource type="Texture2D" uid="uid://546cny6plfil" path="res://assets/icon.svg" id="2_s1t6d"]
+[ext_resource type="Texture2D" uid="uid://546cny6plfil" path="res://assets/icon.svg" id="1_ar3yf"]
+[ext_resource type="Script" path="res://scripts/enemigo.gd" id="1_vjmo0"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_nn3nt"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_hxd3v"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_s1t6d")
+"texture": ExtResource("1_ar3yf")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_l5fa1"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a1n4l"]
 size = Vector2(120.5, 104)
 
-[node name="enemigo" type="CharacterBody2D"]
-position = Vector2(125, 328)
-script = ExtResource("1_0hxhb")
+[node name="enemigo" type="StaticBody2D"]
+script = ExtResource("1_vjmo0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(5.99999, 8)
+self_modulate = Color(1, 0.231373, 0, 1)
 scale = Vector2(1.01953, 0.921875)
-sprite_frames = SubResource("SpriteFrames_nn3nt")
+sprite_frames = SubResource("SpriteFrames_hxd3v")
 
 [node name="zona_daño" type="CollisionShape2D" parent="."]
-position = Vector2(5.75, 8)
-shape = SubResource("RectangleShape2D_l5fa1")
+shape = SubResource("RectangleShape2D_a1n4l")

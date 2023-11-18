@@ -1,21 +1,19 @@
-extends CharacterBody2D
+extends StaticBody2D
 
 @export var speed :int = 200
 @export var steps :int = 250
 var current_steps :int = 0
 
 func _ready():
-	velocity.x = speed
+	pass
 
 func _physics_process(delta):
 	if current_steps < steps:
 		# Mover hacia la derecha
-		velocity.x = speed
+		position.x += speed * delta
 	else:
 		# Giro y mover hacia la izquierda
-		velocity.x = -speed
-
-	move_and_slide()
+		position.x -= speed * delta
 
 	# Actualizar el número de pasos
 	current_steps += 1
