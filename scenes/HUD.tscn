@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://7v03vuvm4qrh"]
+[gd_scene load_steps=4 format=3 uid="uid://7v03vuvm4qrh"]
 
+[ext_resource type="Script" path="res://scripts/HUD.gd" id="1_88ma3"]
 [ext_resource type="Texture2D" uid="uid://546cny6plfil" path="res://assets/icon.svg" id="1_760t3"]
 [ext_resource type="Texture2D" uid="uid://cd2j8k1264u36" path="res://assets/barra.png" id="2_4vsud"]
 
-[node name="Control" type="Control"]
+[node name="HUD" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,6 +15,7 @@ offset_right = 7.0
 offset_bottom = 12.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_88ma3")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -27,19 +29,13 @@ offset_right = 119.0
 offset_bottom = 139.0
 grow_horizontal = 2
 
-[node name="texto" type="Label" parent="CanvasLayer/Cronometro"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 25
-text = "Tiempo"
-horizontal_alignment = 1
-
-[node name="tiempo" type="Label" parent="CanvasLayer/Cronometro"]
+[node name="Tiempo" type="Label" parent="CanvasLayer/Cronometro"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
 text = "00:00:00"
 horizontal_alignment = 1
 
-[node name="Power_up" type="HBoxContainer" parent="CanvasLayer"]
+[node name="ContenedorPowerUPs" type="HBoxContainer" parent="CanvasLayer"]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -50,22 +46,25 @@ offset_top = -128.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Power_up"]
+[node name="PowerUP1" type="TextureRect" parent="CanvasLayer/ContenedorPowerUPs"]
+modulate = Color(0.247059, 1, 0.54902, 1)
 layout_mode = 2
 texture = ExtResource("1_760t3")
 stretch_mode = 5
 
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Power_up"]
+[node name="PowerUP2" type="TextureRect" parent="CanvasLayer/ContenedorPowerUPs"]
+modulate = Color(0.247059, 1, 0.54902, 1)
 layout_mode = 2
 texture = ExtResource("1_760t3")
 stretch_mode = 5
 
-[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/Power_up"]
+[node name="PowerUP3" type="TextureRect" parent="CanvasLayer/ContenedorPowerUPs"]
+modulate = Color(0.247059, 1, 0.54902, 1)
 layout_mode = 2
 texture = ExtResource("1_760t3")
 stretch_mode = 5
 
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+[node name="ContenedorPausa" type="PanelContainer" parent="CanvasLayer"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -75,12 +74,12 @@ offset_right = -45.0
 offset_bottom = 96.0
 grow_horizontal = 0
 
-[node name="Button" type="Button" parent="CanvasLayer/PanelContainer"]
+[node name="BotonPausa" type="Button" parent="CanvasLayer/ContenedorPausa"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
-text = "menu"
+text = "Pause"
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer"]
+[node name="Vida" type="TextureProgressBar" parent="CanvasLayer"]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -89,4 +88,7 @@ offset_top = -463.0
 offset_right = 122.0
 offset_bottom = -49.0
 grow_vertical = 0
-texture_over = ExtResource("2_4vsud")
+max_value = 200.0
+value = 200.0
+fill_mode = 3
+texture_progress = ExtResource("2_4vsud")

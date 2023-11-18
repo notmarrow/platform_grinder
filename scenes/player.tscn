@@ -20,3 +20,8 @@ scale = Vector2(1, 0.990329)
 offset = Vector2(0, -80)
 zoom = Vector2(0.9, 0.9)
 position_smoothing_enabled = true
+
+[node name="DmgCD" type="Timer" parent="."]
+wait_time = 1.5
+
+[connection signal="timeout" from="DmgCD" to="." method="_on_dmg_cd_timeout"]

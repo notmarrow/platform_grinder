@@ -8,7 +8,22 @@ extends CharacterBody2D
 var canDash = true
 var impulse = 0.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-var input_delay = 0.5
+
+#health variables
+@export var health : float = 200.0
+var canGetHurt : bool = true # variable para cooldown de daño
+var timerNode 
+
+#animation variables
+var intermittence_gap : float = 0.0
+var player_sprite
+
+#signals
+signal health_signal(value)
+
+func _ready():
+	timerNode = get_node("DmgCD")
+	player_sprite = get_node("Sprite2D")
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -36,4 +51,35 @@ func _physics_process(delta):
 		position.x += direction * DASH_SPEED
 
 	move_and_slide()
+	
+	#checar si la colision es con enemigo
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		if collision.get_collider().is_in_group("enemy") and canGetHurt:
+			hurt(collision.get_collider().get_dmg())
+			
+func _process(delta):
+	if not canGetHurt:
+		intermittence_gap += delta
+	else:
+		intermittence_gap = 0.0
+		if not player_sprite.is_visible():
+			player_sprite.show()
+	
+	if intermittence_gap >= 0.2:
+		if player_sprite.is_visible():
+			player_sprite.hide()
+		else:
+			player_sprite.show()
+		intermittence_gap = 0.0
+		
+	
+func hurt(dmg):
+	canGetHurt = false
+	timerNode.start()
+	health -= dmg
+	health_signal.emit(health)
 
+
+func _on_dmg_cd_timeout():
+	canGetHurt = true
