@@ -1,13 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://b8yhiig2pjjk2"]
+[gd_scene load_steps=8 format=3 uid="uid://b8yhiig2pjjk2"]
 
+[ext_resource type="Script" path="res://scenes/manager.gd" id="1_2cfvn"]
 [ext_resource type="PackedScene" uid="uid://bsfq38a3p000s" path="res://scenes/player.tscn" id="1_5ubox"]
 [ext_resource type="Texture2D" uid="uid://546cny6plfil" path="res://assets/icon.svg" id="2_bwcbm"]
 [ext_resource type="PackedScene" uid="uid://64urlo2x2vqy" path="res://scenes/enemigo.tscn" id="3_cxjte"]
+[ext_resource type="PackedScene" uid="uid://7v03vuvm4qrh" path="res://scenes/HUD.tscn" id="4_u3p38"]
+[ext_resource type="PackedScene" uid="uid://c62bph81o57tq" path="res://scenes/obstaculo.tscn" id="6_vbwes"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h8nmn"]
 size = Vector2(637, 101)
 
 [node name="escena_prueba" type="Node2D"]
+script = ExtResource("1_2cfvn")
 
 [node name="player" parent="." instance=ExtResource("1_5ubox")]
 position = Vector2(306, 503)
@@ -40,3 +44,12 @@ texture = ExtResource("2_bwcbm")
 [node name="enemigo" parent="." instance=ExtResource("3_cxjte")]
 position = Vector2(869, 316)
 steps = 40
+damage = 5.0
+
+[node name="HUD" parent="." instance=ExtResource("4_u3p38")]
+
+[node name="obstaculo" parent="." instance=ExtResource("6_vbwes")]
+position = Vector2(665, 513)
+
+[connection signal="timer" from="." to="HUD" method="update_clock"]
+[connection signal="health_signal" from="player" to="HUD" method="update_health"]
