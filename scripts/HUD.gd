@@ -34,3 +34,7 @@ func update_clock(time):
 	var formatted_time = "%02d:%02d:%05.2f" % [h, m, s]
 	
 	time_label.text = formatted_time
+
+
+func _on_boton_pausa_pressed():
+	get_parent().pause()
