@@ -84,6 +84,8 @@ func hurt(dmg):
 	timerNode.start()
 	health -= dmg
 	health_signal.emit(health)
+	if(health <= 0):
+		die()
 
 func heal(hp):
 	health += hp
@@ -93,5 +95,17 @@ func heal(hp):
 
 func _on_dmg_cd_timeout():
 	canGetHurt = true
-	
 
+func die():
+	if get_parent().checkpoint_reached:
+		var checkpoint = get_node("../checkpoint")
+		get_parent().reset()
+		health = HEALTH_MAX
+		position = checkpoint.position
+	else:
+		var spawn = get_node("../spawn")
+		get_parent().reset()
+		health = HEALTH_MAX
+		position = spawn.position
+	
+	health_signal.emit(health)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b8yhiig2pjjk2"]
+[gd_scene load_steps=12 format=3 uid="uid://b8yhiig2pjjk2"]
 
 [ext_resource type="PackedScene" uid="uid://bsfq38a3p000s" path="res://scenes/player.tscn" id="1_5ubox"]
 [ext_resource type="Script" path="res://scripts/manager.gd" id="1_gr6s6"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://b1aojcn36y04p" path="res://scenes/pause_menu.tscn" id="6_ty4ob"]
 [ext_resource type="PackedScene" uid="uid://c62bph81o57tq" path="res://scenes/obstaculo.tscn" id="6_vbwes"]
 [ext_resource type="PackedScene" uid="uid://c23uslhkgj44o" path="res://scenes/heal.tscn" id="8_t2fju"]
+[ext_resource type="PackedScene" uid="uid://dv5y3tcxa5nm3" path="res://scenes/checkpoint.tscn" id="9_2r3bt"]
+[ext_resource type="PackedScene" uid="uid://dedsuw3clmfxe" path="res://scenes/spawn.tscn" id="10_cajne"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h8nmn"]
 size = Vector2(637, 101)
@@ -63,6 +65,13 @@ offset_bottom = 513.0
 [node name="Heal" parent="." instance=ExtResource("8_t2fju")]
 position = Vector2(100, 408)
 
+[node name="checkpoint" parent="." instance=ExtResource("9_2r3bt")]
+position = Vector2(938, 514)
+
+[node name="spawn" parent="." instance=ExtResource("10_cajne")]
+position = Vector2(305, 533)
+
 [connection signal="timer" from="." to="HUD" method="update_clock"]
 [connection signal="health_signal" from="player" to="HUD" method="update_health"]
 [connection signal="unpause" from="pause_menu" to="." method="_on_pause_menu_unpause"]
+[connection signal="body_entered" from="checkpoint" to="." method="_on_checkpoint_body_entered"]
