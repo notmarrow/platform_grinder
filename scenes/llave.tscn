@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqwsplkcgy2db"]
+
+[ext_resource type="Texture2D" uid="uid://546cny6plfil" path="res://assets/icon.svg" id="2_mbpkw"]
+
+[sub_resource type="GDScript" id="GDScript_h0kh4"]
+script/source = "extends StaticBody2D
+
+func _on_Area_llave_body_entered(body):
+	if body.is_in_group(\"player\"):
+		queue_free() 
+"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ek64v"]
+radius = 16.0
+height = 98.0
+
+[node name="llave" type="StaticBody2D"]
+script = SubResource("GDScript_h0kh4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.635294, 0.494118, 0, 1)
+position = Vector2(1, 1)
+scale = Vector2(0.242187, 0.769531)
+texture = ExtResource("2_mbpkw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_ek64v")

@@ -1,0 +1,74 @@
+[gd_scene load_steps=7 format=3 uid="uid://bpiglxpc56bkq"]
+
+[ext_resource type="Texture2D" uid="uid://546cny6plfil" path="res://assets/icon.svg" id="1_d8og7"]
+[ext_resource type="PackedScene" uid="uid://7v03vuvm4qrh" path="res://scenes/HUD.tscn" id="1_q8swe"]
+[ext_resource type="Script" path="res://scripts/manager.gd" id="1_qvlv6"]
+[ext_resource type="PackedScene" uid="uid://bsfq38a3p000s" path="res://scenes/player.tscn" id="2_h4sqi"]
+[ext_resource type="PackedScene" uid="uid://64urlo2x2vqy" path="res://scenes/enemigo.tscn" id="3_oi01o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_puln7"]
+size = Vector2(688.065, 258.395)
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(-1, 1)
+script = ExtResource("1_qvlv6")
+
+[node name="player" parent="." instance=ExtResource("2_h4sqi")]
+position = Vector2(139, 462)
+
+[node name="floor2" type="StaticBody2D" parent="."]
+position = Vector2(308, 561)
+scale = Vector2(0.5, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor2"]
+position = Vector2(46.98, 59.8101)
+scale = Vector2(1.84, 0.76)
+shape = SubResource("RectangleShape2D_puln7")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="floor2"]
+position = Vector2(38.2499, 66)
+scale = Vector2(10.1836, 1.65625)
+texture = ExtResource("1_d8og7")
+metadata/_edit_lock_ = true
+
+[node name="floor3" type="StaticBody2D" parent="."]
+position = Vector2(995, 434)
+scale = Vector2(0.5, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor3"]
+position = Vector2(46.98, 59.8101)
+scale = Vector2(1.84, 0.76)
+shape = SubResource("RectangleShape2D_puln7")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="floor3"]
+position = Vector2(38.2499, 66)
+scale = Vector2(10.1836, 1.65625)
+texture = ExtResource("1_d8og7")
+metadata/_edit_lock_ = true
+
+[node name="floor4" type="StaticBody2D" parent="."]
+position = Vector2(1639, 556)
+scale = Vector2(0.5, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor4"]
+position = Vector2(46.98, 59.8101)
+scale = Vector2(1.84, 0.76)
+shape = SubResource("RectangleShape2D_puln7")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="floor4"]
+position = Vector2(38.2499, 66)
+scale = Vector2(10.1836, 1.65625)
+texture = ExtResource("1_d8og7")
+metadata/_edit_lock_ = true
+
+[node name="enemigo" parent="." instance=ExtResource("3_oi01o")]
+position = Vector2(764, 351)
+steps = 26
+
+[node name="HUD" parent="." instance=ExtResource("1_q8swe")]
+
+[connection signal="timer" from="." to="HUD" method="_on_node_2d_timer"]
+[connection signal="health_signal" from="player" to="HUD" method="_on_player_health_signal"]

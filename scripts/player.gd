@@ -5,6 +5,7 @@ extends CharacterBody2D
 @export var JUMP_VELOCITY : float = -40.0
 @export var DASH_SPEED : float = 300.0
 
+
 var canDash = true
 var impulse = 0.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")

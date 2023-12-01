@@ -34,3 +34,11 @@ func update_clock(time):
 	var formatted_time = "%02d:%02d:%05.2f" % [h, m, s]
 	
 	time_label.text = formatted_time
+
+
+func _on_player_health_signal(value):
+	pass # Replace with function body.
+
+
+func _on_node_2d_timer(time):
+	pass # Replace with function body.
