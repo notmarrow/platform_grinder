@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var SPEED : float = 300.0
 @export var JUMP_VELOCITY : float = -40.0
 @export var DASH_SPEED : float = 300.0
+@export var HEALTH_MAX : float = 200.0
 
 var canDash = true
 var impulse = 0.0
@@ -21,9 +22,15 @@ var player_sprite
 #signals
 signal health_signal(value)
 
+#key variable
+var has_key : bool = false
+
 func _ready():
 	timerNode = get_node("DmgCD")
 	player_sprite = get_node("Sprite2D")
+	health = HEALTH_MAX
+	await owner.ready
+	spawn()
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -46,7 +53,7 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
-	if Input.is_action_just_pressed("click") and canDash:
+	if Input.is_action_just_pressed("right_click") and canDash:
 		canDash = false
 		position.x += direction * DASH_SPEED
 
@@ -57,6 +64,14 @@ func _physics_process(delta):
 		var collision = get_slide_collision(i)
 		if collision.get_collider().is_in_group("enemy") and canGetHurt:
 			hurt(collision.get_collider().get_dmg())
+		elif collision.get_collider().is_in_group("heal"):
+			heal(collision.get_collider().get_heal())
+			collision.get_collider().queue_free()
+		elif collision.get_collider().is_in_group("key"):
+			has_key = true
+			collision.get_collider().queue_free()
+		elif collision.get_collider().is_in_group("door") and has_key:
+			get_parent().ending_reached = true
 			
 func _process(delta):
 	if not canGetHurt:
@@ -79,7 +94,29 @@ func hurt(dmg):
 	timerNode.start()
 	health -= dmg
 	health_signal.emit(health)
+	if(health <= 0):
+		die()
 
+func heal(hp):
+	health += hp
+	if health > HEALTH_MAX:
+		health = HEALTH_MAX
+	health_signal.emit(health)
 
 func _on_dmg_cd_timeout():
 	canGetHurt = true
+
+func spawn():
+	if get_parent().checkpoint_reached:
+		var checkpoint = get_node("../checkpoint")
+		health = HEALTH_MAX
+		position = checkpoint.position
+	else:
+		var spawnv = get_node("../spawn")
+		get_parent().reset()
+		health = HEALTH_MAX
+		position = spawnv.position
+
+func die():
+	spawn()
+	health_signal.emit(health)

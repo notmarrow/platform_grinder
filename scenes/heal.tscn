@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://c23uslhkgj44o"]
+
+[ext_resource type="Texture2D" uid="uid://546cny6plfil" path="res://assets/icon.svg" id="1_7rmew"]
+[ext_resource type="Script" path="res://scripts/heal.gd" id="1_jkllt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nae78"]
+size = Vector2(117, 117)
+
+[node name="Heal" type="StaticBody2D"]
+script = ExtResource("1_jkllt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.109804, 1, 1, 1)
+texture = ExtResource("1_7rmew")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_nae78")

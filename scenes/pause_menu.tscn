@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1aojcn36y04p"]
+
+[ext_resource type="Theme" uid="uid://cy7tgwoexgs4m" path="res://assets/menu.tres" id="1_kl5u1"]
+[ext_resource type="Script" path="res://scenes/pause_menu.gd" id="2_p3jly"]
+
+[node name="pause_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_kl5u1")
+script = ExtResource("2_p3jly")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.1
+anchor_right = 0.7
+anchor_bottom = 0.9
+
+[node name="Menu_Button" type="Button" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.1
+anchor_right = 0.8
+anchor_bottom = 0.2
+theme = ExtResource("1_kl5u1")
+text = "Return To Menu"
+
+[node name="Button" type="Button" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.93
+anchor_top = 0.01
+anchor_right = 0.99
+anchor_bottom = 0.06
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_kl5u1")
+text = "X"
+
+[connection signal="pressed" from="CanvasLayer/Panel/Menu_Button" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Panel/Button" to="." method="_on_button_pressed"]

@@ -92,3 +92,5 @@ max_value = 200.0
 value = 200.0
 fill_mode = 3
 texture_progress = ExtResource("2_4vsud")
+
+[connection signal="pressed" from="CanvasLayer/ContenedorPausa/BotonPausa" to="." method="_on_boton_pausa_pressed"]
