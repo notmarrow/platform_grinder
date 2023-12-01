@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://btfj35v6xn0o4"]
+
+[ext_resource type="Theme" uid="uid://cy7tgwoexgs4m" path="res://assets/menu.tres" id="1_hojuk"]
+[ext_resource type="Script" path="res://scenes/win_screen.gd" id="1_yauly"]
+
+[node name="WinScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yauly")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.03
+anchor_top = 0.05
+anchor_right = 0.97
+anchor_bottom = 0.95
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.2
+theme = ExtResource("1_hojuk")
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[center] You Win [/center]"
+scroll_active = false
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

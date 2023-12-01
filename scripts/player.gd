@@ -22,10 +22,15 @@ var player_sprite
 #signals
 signal health_signal(value)
 
+#key variable
+var has_key : bool = false
+
 func _ready():
 	timerNode = get_node("DmgCD")
 	player_sprite = get_node("Sprite2D")
 	health = HEALTH_MAX
+	await owner.ready
+	spawn()
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -62,6 +67,11 @@ func _physics_process(delta):
 		elif collision.get_collider().is_in_group("heal"):
 			heal(collision.get_collider().get_heal())
 			collision.get_collider().queue_free()
+		elif collision.get_collider().is_in_group("key"):
+			has_key = true
+			collision.get_collider().queue_free()
+		elif collision.get_collider().is_in_group("door") and has_key:
+			get_parent().ending_reached = true
 			
 func _process(delta):
 	if not canGetHurt:
@@ -96,16 +106,17 @@ func heal(hp):
 func _on_dmg_cd_timeout():
 	canGetHurt = true
 
-func die():
+func spawn():
 	if get_parent().checkpoint_reached:
 		var checkpoint = get_node("../checkpoint")
-		get_parent().reset()
 		health = HEALTH_MAX
 		position = checkpoint.position
 	else:
-		var spawn = get_node("../spawn")
+		var spawnv = get_node("../spawn")
 		get_parent().reset()
 		health = HEALTH_MAX
-		position = spawn.position
-	
+		position = spawnv.position
+
+func die():
+	spawn()
 	health_signal.emit(health)

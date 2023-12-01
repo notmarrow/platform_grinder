@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b8yhiig2pjjk2"]
+[gd_scene load_steps=14 format=3 uid="uid://b8yhiig2pjjk2"]
 
 [ext_resource type="PackedScene" uid="uid://bsfq38a3p000s" path="res://scenes/player.tscn" id="1_5ubox"]
 [ext_resource type="Script" path="res://scripts/manager.gd" id="1_gr6s6"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://c23uslhkgj44o" path="res://scenes/heal.tscn" id="8_t2fju"]
 [ext_resource type="PackedScene" uid="uid://dv5y3tcxa5nm3" path="res://scenes/checkpoint.tscn" id="9_2r3bt"]
 [ext_resource type="PackedScene" uid="uid://dedsuw3clmfxe" path="res://scenes/spawn.tscn" id="10_cajne"]
+[ext_resource type="PackedScene" uid="uid://bpf2mwmuivl7n" path="res://scenes/door.tscn" id="11_mvugg"]
+[ext_resource type="PackedScene" uid="uid://isbgtkyjde1n" path="res://scenes/key.tscn" id="12_4rrt6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h8nmn"]
 size = Vector2(637, 101)
@@ -45,6 +47,18 @@ shape = SubResource("RectangleShape2D_h8nmn")
 scale = Vector2(9.58594, 0.625)
 texture = ExtResource("2_bwcbm")
 
+[node name="floor3" type="StaticBody2D" parent="."]
+position = Vector2(220, 290)
+scale = Vector2(0.319999, 0.593598)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor3"]
+scale = Vector2(1.84, 0.76)
+shape = SubResource("RectangleShape2D_h8nmn")
+
+[node name="Sprite2D" type="Sprite2D" parent="floor3"]
+scale = Vector2(9.58594, 0.625)
+texture = ExtResource("2_bwcbm")
+
 [node name="enemigo" parent="." instance=ExtResource("3_cxjte")]
 position = Vector2(869, 316)
 steps = 40
@@ -70,6 +84,12 @@ position = Vector2(938, 514)
 
 [node name="spawn" parent="." instance=ExtResource("10_cajne")]
 position = Vector2(305, 533)
+
+[node name="Door" parent="." instance=ExtResource("11_mvugg")]
+position = Vector2(225, 197)
+
+[node name="Key" parent="." instance=ExtResource("12_4rrt6")]
+position = Vector2(1097, 517)
 
 [connection signal="timer" from="." to="HUD" method="update_clock"]
 [connection signal="health_signal" from="player" to="HUD" method="update_health"]
