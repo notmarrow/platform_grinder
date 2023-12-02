@@ -36,9 +36,8 @@ func update_clock(time):
 	time_label.text = formatted_time
 
 
-func _on_player_health_signal(value):
-	pass # Replace with function body.
+func _on_boton_pausa_pressed():
+	get_parent().pause()
 
 
-func _on_node_2d_timer(time):
-	pass # Replace with function body.
+

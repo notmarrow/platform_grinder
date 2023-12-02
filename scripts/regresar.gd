@@ -1,4 +1,6 @@
 extends Control
 
-func _on_button_pressed():
+
+func _on_pressed():
+	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/menu.tscn")

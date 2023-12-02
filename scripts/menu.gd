@@ -1,7 +1,7 @@
 extends Control
 
 func _on_button_jugar_pressed():
-	get_tree().change_scene_to_file("res://scenes/nivel1.tscn")
+	get_tree().change_scene_to_file("res://scenes/nivel_1.tscn")
 
 
 func _on_button_salir_pressed():
@@ -9,7 +9,7 @@ func _on_button_salir_pressed():
 
 
 func _on_button_new_game_pressed():
-	get_tree().change_scene_to_file("res://scenes/nivel1.tscn")
+	get_tree().change_scene_to_file("res://scenes/nivel_1.tscn")
 
 
 func _on_button_select_level_pressed():
