@@ -55,7 +55,7 @@ func _physics_process(delta):
 
 	if Input.is_action_just_pressed("right_click") and canDash:
 		canDash = false
-		position.x += direction * DASH_SPEED
+		position.y += DASH_SPEED
 
 	move_and_slide()
 	
