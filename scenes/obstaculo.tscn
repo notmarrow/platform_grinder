@@ -1,20 +1,18 @@
 [gd_scene load_steps=4 format=3 uid="uid://c62bph81o57tq"]
 
 [ext_resource type="Script" path="res://scripts/obstaculo.gd" id="1_adn4f"]
-[ext_resource type="Texture2D" uid="uid://546cny6plfil" path="res://assets/icon.svg" id="1_eo88p"]
+[ext_resource type="Texture2D" uid="uid://bl004iphktwp6" path="res://assets/IMG_0856.PNG" id="2_qxvel"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0kirj"]
-size = Vector2(116, 117)
+size = Vector2(81, 64)
 
 [node name="obstaculo" type="StaticBody2D"]
 script = ExtResource("1_adn4f")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.898039, 0.894118, 0, 1)
-texture = ExtResource("1_eo88p")
-metadata/_edit_lock_ = true
+scale = Vector2(2, 2)
+texture = ExtResource("2_qxvel")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1.5)
+position = Vector2(0.5, 5)
 shape = SubResource("RectangleShape2D_0kirj")
-metadata/_edit_lock_ = true

@@ -33,3 +33,8 @@ func save_game():
 func print_save():
 	print(level1_checkpoint)
 	print(level1_completed)
+
+func reset_progress():
+	level1_checkpoint = false
+	level1_completed = false
+	save_game()

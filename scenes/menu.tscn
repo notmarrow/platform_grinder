@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cg1edfmw2d2t1"]
+[gd_scene load_steps=4 format=3 uid="uid://cg1edfmw2d2t1"]
 
 [ext_resource type="Theme" uid="uid://cy7tgwoexgs4m" path="res://assets/menu.tres" id="1_exp1m"]
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_xrep5"]
+[ext_resource type="Texture2D" uid="uid://uqkwswccrn31" path="res://assets/IMG_0859.PNG" id="3_uwj4f"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -16,6 +17,15 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_exp1m")
 script = ExtResource("1_xrep5")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_uwj4f")
 
 [node name="VBoxContainerBotones" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -58,6 +68,11 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Salir"
 
+[node name="Button_reset" type="Button" parent="VBoxContainerBotones"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Reset"
+
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 10
@@ -75,3 +90,4 @@ vertical_alignment = 1
 [connection signal="pressed" from="VBoxContainerBotones/Button_options" to="." method="_on_button_options_pressed"]
 [connection signal="pressed" from="VBoxContainerBotones/Button_Creditos" to="." method="_on_button_creditos_pressed"]
 [connection signal="pressed" from="VBoxContainerBotones/Button_salir" to="." method="_on_button_salir_pressed"]
+[connection signal="pressed" from="VBoxContainerBotones/Button_reset" to="." method="_on_button_reset_pressed"]

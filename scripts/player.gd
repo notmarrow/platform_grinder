@@ -55,7 +55,7 @@ func _physics_process(delta):
 
 	if Input.is_action_just_pressed("right_click") and canDash:
 		canDash = false
-		position.y += DASH_SPEED
+		position.y -= DASH_SPEED
 
 	move_and_slide()
 	
@@ -113,7 +113,6 @@ func spawn():
 		position = checkpoint.position
 	else:
 		var spawnv = get_node("../spawn")
-		get_parent().reset()
 		health = HEALTH_MAX
 		position = spawnv.position
 

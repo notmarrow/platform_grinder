@@ -22,3 +22,7 @@ func _on_button_options_pressed():
 
 func _on_button_creditos_pressed():
 	get_tree().change_scene_to_file("res://scenes/credito.tscn")
+
+
+func _on_button_reset_pressed():
+	Gamevars.reset_progress()

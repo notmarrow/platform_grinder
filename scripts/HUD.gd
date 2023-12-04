@@ -13,6 +13,11 @@ func _ready():
 	powerup2_texture = get_node("CanvasLayer/ContenedorPowerUPs/PowerUP2")
 	powerup3_texture = get_node("CanvasLayer/ContenedorPowerUPs/PowerUP3")
 	health_bar = get_node("CanvasLayer/Vida")
+	
+	#temporary hide
+	powerup1_texture.hide()
+	powerup2_texture.hide()
+	powerup3_texture.hide()
 
 func update_health(health):
 	health_bar.value = health
