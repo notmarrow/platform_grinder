@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://b8yhiig2pjjk2"]
+[gd_scene load_steps=14 format=3 uid="uid://b8yhiig2pjjk2"]
 
 [ext_resource type="PackedScene" uid="uid://bsfq38a3p000s" path="res://scenes/player.tscn" id="1_5ubox"]
 [ext_resource type="Script" path="res://scripts/manager.gd" id="1_gr6s6"]
 [ext_resource type="PackedScene" uid="uid://64urlo2x2vqy" path="res://scenes/enemigo.tscn" id="3_cxjte"]
+[ext_resource type="Texture2D" uid="uid://bb6p4w5na5ac1" path="res://assets/IMG_0874.png" id="4_cf0y1"]
 [ext_resource type="PackedScene" uid="uid://7v03vuvm4qrh" path="res://scenes/HUD.tscn" id="4_u3p38"]
 [ext_resource type="PackedScene" uid="uid://b1aojcn36y04p" path="res://scenes/pause_menu.tscn" id="6_ty4ob"]
 [ext_resource type="PackedScene" uid="uid://c62bph81o57tq" path="res://scenes/obstaculo.tscn" id="6_vbwes"]
@@ -15,6 +16,17 @@
 
 [node name="escena_prueba" type="Node2D"]
 script = ExtResource("1_gr6s6")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_cf0y1")
 
 [node name="checkpoint" parent="." instance=ExtResource("9_2r3bt")]
 position = Vector2(817, -274)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c62bph81o57tq"]
 
 [ext_resource type="Script" path="res://scripts/obstaculo.gd" id="1_adn4f"]
-[ext_resource type="Texture2D" uid="uid://bl004iphktwp6" path="res://assets/IMG_0856.PNG" id="2_qxvel"]
+[ext_resource type="Texture2D" uid="uid://dvsbqv4vuf3pb" path="res://assets/IMG_0873.png" id="2_tmhnu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0kirj"]
 size = Vector2(81, 64)
@@ -11,7 +11,7 @@ script = ExtResource("1_adn4f")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(2, 2)
-texture = ExtResource("2_qxvel")
+texture = ExtResource("2_tmhnu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 5)
